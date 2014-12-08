@@ -4612,6 +4612,50 @@ int lua_register_dragonbones_BaseFactory(lua_State* tolua_S)
     return 1;
 }
 
+int lua_dragonbones_DBCCSlot_getGlobalPosition(lua_State* tolua_S)
+{
+    int argc = 0;
+    dragonBones::DBCCSlot* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"db.DBCCSlot",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (dragonBones::DBCCSlot*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCSlot_getGlobalPosition'", nullptr);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        cocos2d::Vec2 ret = cobj->getGlobalPosition();
+        vec2_to_luaval(tolua_S, ret);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getGlobalPosition",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCSlot_getGlobalPosition'.",&tolua_err);
+#endif
+
+    return 0;
+}
 int lua_dragonbones_DBCCSlot_getCCChildArmature(lua_State* tolua_S)
 {
     int argc = 0;
@@ -4807,6 +4851,7 @@ int lua_register_dragonbones_DBCCSlot(lua_State* tolua_S)
 
     tolua_beginmodule(tolua_S,"DBCCSlot");
         tolua_function(tolua_S,"new",lua_dragonbones_DBCCSlot_constructor);
+        tolua_function(tolua_S,"getGlobalPosition",lua_dragonbones_DBCCSlot_getGlobalPosition);
         tolua_function(tolua_S,"getCCChildArmature",lua_dragonbones_DBCCSlot_getCCChildArmature);
         tolua_function(tolua_S,"getCCDisplay",lua_dragonbones_DBCCSlot_getCCDisplay);
         tolua_function(tolua_S,"setDisplayImage",lua_dragonbones_DBCCSlot_setDisplayImage);
@@ -6072,6 +6117,36 @@ int lua_dragonbones_DBCCFactory_loadDragonBonesData(lua_State* tolua_S)
 
     return 0;
 }
+int lua_dragonbones_DBCCFactory_destroyInstance(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"db.DBCCFactory",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 0)
+    {
+        if(!ok)
+            return 0;
+        dragonBones::DBCCFactory::destroyInstance();
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "destroyInstance",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCFactory_destroyInstance'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_dragonbones_DBCCFactory_getInstance(lua_State* tolua_S)
 {
     int argc = 0;
@@ -6154,6 +6229,7 @@ int lua_register_dragonbones_DBCCFactory(lua_State* tolua_S)
         tolua_function(tolua_S,"refreshAllTextureAtlasTexture",lua_dragonbones_DBCCFactory_refreshAllTextureAtlasTexture);
         tolua_function(tolua_S,"refreshTextureAtlasTexture",lua_dragonbones_DBCCFactory_refreshTextureAtlasTexture);
         tolua_function(tolua_S,"loadDragonBonesData",lua_dragonbones_DBCCFactory_loadDragonBonesData);
+        tolua_function(tolua_S,"destroyInstance", lua_dragonbones_DBCCFactory_destroyInstance);
         tolua_function(tolua_S,"getInstance", lua_dragonbones_DBCCFactory_getInstance);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(dragonBones::DBCCFactory).name();
