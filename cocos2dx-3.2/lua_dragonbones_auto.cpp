@@ -38,11 +38,14 @@ int lua_dragonbones_IAnimatable_advanceTime(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_IAnimatable_advanceTime'", nullptr);
             return 0;
+        }
         cobj->advanceTime(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "advanceTime",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.IAnimatable:advanceTime",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -104,12 +107,15 @@ int lua_dragonbones_AnimationState_setCurrentTime(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_setCurrentTime'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->setCurrentTime(arg0);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCurrentTime",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:setCurrentTime",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -151,12 +157,15 @@ int lua_dragonbones_AnimationState_setTimeScale(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_setTimeScale'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->setTimeScale(arg0);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTimeScale",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:setTimeScale",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -198,12 +207,15 @@ int lua_dragonbones_AnimationState_setAdditiveBlending(lua_State* tolua_S)
 
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_setAdditiveBlending'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->setAdditiveBlending(arg0);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setAdditiveBlending",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:setAdditiveBlending",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -242,12 +254,15 @@ int lua_dragonbones_AnimationState_getClip(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_getClip'", nullptr);
             return 0;
+        }
         const dragonBones::AnimationData* ret = cobj->getClip();
         object_to_luaval<dragonBones::AnimationData>(tolua_S, "db.AnimationData",(dragonBones::AnimationData*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getClip",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:getClip",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -289,12 +304,15 @@ int lua_dragonbones_AnimationState_setPlayTimes(lua_State* tolua_S)
 
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_setPlayTimes'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->setPlayTimes(arg0);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPlayTimes",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:setPlayTimes",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -336,7 +354,10 @@ int lua_dragonbones_AnimationState_removeMixingTransform(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_removeMixingTransform'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->removeMixingTransform(arg0);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -350,12 +371,15 @@ int lua_dragonbones_AnimationState_removeMixingTransform(lua_State* tolua_S)
 
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_removeMixingTransform'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->removeMixingTransform(arg0, arg1);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeMixingTransform",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:removeMixingTransform",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -394,12 +418,15 @@ int lua_dragonbones_AnimationState_getGroup(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_getGroup'", nullptr);
             return 0;
+        }
         const std::string& ret = cobj->getGroup();
         tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getGroup",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:getGroup",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -438,12 +465,15 @@ int lua_dragonbones_AnimationState_getCurrentPlayTimes(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_getCurrentPlayTimes'", nullptr);
             return 0;
+        }
         int ret = cobj->getCurrentPlayTimes();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCurrentPlayTimes",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:getCurrentPlayTimes",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -482,12 +512,15 @@ int lua_dragonbones_AnimationState_removeAllMixingTransform(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_removeAllMixingTransform'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->removeAllMixingTransform();
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeAllMixingTransform",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:removeAllMixingTransform",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -529,7 +562,10 @@ int lua_dragonbones_AnimationState_addMixingTransform(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_addMixingTransform'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->addMixingTransform(arg0);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -543,12 +579,15 @@ int lua_dragonbones_AnimationState_addMixingTransform(lua_State* tolua_S)
 
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_addMixingTransform'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->addMixingTransform(arg0, arg1);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addMixingTransform",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:addMixingTransform",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -587,12 +626,15 @@ int lua_dragonbones_AnimationState_getCurrentTime(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_getCurrentTime'", nullptr);
             return 0;
+        }
         double ret = cobj->getCurrentTime();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCurrentTime",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:getCurrentTime",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -634,7 +676,10 @@ int lua_dragonbones_AnimationState_setAutoFadeOut(lua_State* tolua_S)
 
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_setAutoFadeOut'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->setAutoFadeOut(arg0);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -648,12 +693,15 @@ int lua_dragonbones_AnimationState_setAutoFadeOut(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_setAutoFadeOut'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->setAutoFadeOut(arg0, arg1);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setAutoFadeOut",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:setAutoFadeOut",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -692,12 +740,15 @@ int lua_dragonbones_AnimationState_getTotalTime(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_getTotalTime'", nullptr);
             return 0;
+        }
         double ret = cobj->getTotalTime();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTotalTime",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:getTotalTime",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -736,12 +787,15 @@ int lua_dragonbones_AnimationState_getLayer(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_getLayer'", nullptr);
             return 0;
+        }
         int ret = cobj->getLayer();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLayer",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:getLayer",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -780,12 +834,15 @@ int lua_dragonbones_AnimationState_getPlayTimes(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_getPlayTimes'", nullptr);
             return 0;
+        }
         int ret = cobj->getPlayTimes();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPlayTimes",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:getPlayTimes",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -824,12 +881,15 @@ int lua_dragonbones_AnimationState_play(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_play'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->play();
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "play",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:play",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -874,12 +934,15 @@ int lua_dragonbones_AnimationState_fadeOut(lua_State* tolua_S)
 
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_fadeOut'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->fadeOut(arg0, arg1);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "fadeOut",argc, 2);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:fadeOut",argc, 2);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -918,12 +981,15 @@ int lua_dragonbones_AnimationState_stop(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_stop'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->stop();
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "stop",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:stop",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -962,12 +1028,15 @@ int lua_dragonbones_AnimationState_getCurrentWeight(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_getCurrentWeight'", nullptr);
             return 0;
+        }
         double ret = cobj->getCurrentWeight();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCurrentWeight",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:getCurrentWeight",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1006,12 +1075,15 @@ int lua_dragonbones_AnimationState_getIsComplete(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_getIsComplete'", nullptr);
             return 0;
+        }
         bool ret = cobj->getIsComplete();
         tolua_pushboolean(tolua_S,(bool)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getIsComplete",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:getIsComplete",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1050,12 +1122,15 @@ int lua_dragonbones_AnimationState_getTimeScale(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_getTimeScale'", nullptr);
             return 0;
+        }
         double ret = cobj->getTimeScale();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTimeScale",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:getTimeScale",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1100,12 +1175,15 @@ int lua_dragonbones_AnimationState_setFrameTween(lua_State* tolua_S)
 
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_setFrameTween'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->setFrameTween(arg0, arg1);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFrameTween",argc, 2);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:setFrameTween",argc, 2);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1147,12 +1225,15 @@ int lua_dragonbones_AnimationState_setWeight(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_setWeight'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->setWeight(arg0);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setWeight",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:setWeight",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1194,12 +1275,15 @@ int lua_dragonbones_AnimationState_getMixingTransform(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_getMixingTransform'", nullptr);
             return 0;
+        }
         bool ret = cobj->getMixingTransform(arg0);
         tolua_pushboolean(tolua_S,(bool)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getMixingTransform",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:getMixingTransform",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1238,12 +1322,15 @@ int lua_dragonbones_AnimationState_getIsPlaying(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_getIsPlaying'", nullptr);
             return 0;
+        }
         bool ret = cobj->getIsPlaying();
         tolua_pushboolean(tolua_S,(bool)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getIsPlaying",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:getIsPlaying",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1269,13 +1356,16 @@ int lua_dragonbones_AnimationState_constructor(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_AnimationState_constructor'", nullptr);
             return 0;
+        }
         cobj = new dragonBones::AnimationState();
         tolua_pushusertype(tolua_S,(void*)cobj,"db.AnimationState");
         tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "AnimationState",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.AnimationState:AnimationState",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1359,12 +1449,15 @@ int lua_dragonbones_Animation_getAnimationList(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_getAnimationList'", nullptr);
             return 0;
+        }
         const std::vector<std::string>& ret = cobj->getAnimationList();
         ccvector_std_string_to_luaval(tolua_S, ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAnimationList",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:getAnimationList",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1406,11 +1499,14 @@ int lua_dragonbones_Animation_setTimeScale(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_setTimeScale'", nullptr);
             return 0;
+        }
         cobj->setTimeScale(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTimeScale",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:setTimeScale",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1449,11 +1545,14 @@ int lua_dragonbones_Animation_stop(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_stop'", nullptr);
             return 0;
+        }
         cobj->stop();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "stop",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:stop",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1492,11 +1591,14 @@ int lua_dragonbones_Animation_clear(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_clear'", nullptr);
             return 0;
+        }
         cobj->clear();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "clear",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:clear",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1535,11 +1637,14 @@ int lua_dragonbones_Animation_dispose(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_dispose'", nullptr);
             return 0;
+        }
         cobj->dispose();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "dispose",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:dispose",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1578,11 +1683,14 @@ int lua_dragonbones_Animation_play(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_play'", nullptr);
             return 0;
+        }
         cobj->play();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "play",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:play",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1624,12 +1732,15 @@ int lua_dragonbones_Animation_hasAnimation(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_hasAnimation'", nullptr);
             return 0;
+        }
         bool ret = cobj->hasAnimation(arg0);
         tolua_pushboolean(tolua_S,(bool)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "hasAnimation",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:hasAnimation",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1668,12 +1779,15 @@ int lua_dragonbones_Animation_getLastAnimationState(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_getLastAnimationState'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->getLastAnimationState();
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLastAnimationState",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:getLastAnimationState",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1715,7 +1829,10 @@ int lua_dragonbones_Animation_gotoAndPlay(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndPlay'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndPlay(arg0);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -1729,7 +1846,10 @@ int lua_dragonbones_Animation_gotoAndPlay(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndPlay'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndPlay(arg0, arg1);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -1746,7 +1866,10 @@ int lua_dragonbones_Animation_gotoAndPlay(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndPlay'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndPlay(arg0, arg1, arg2);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -1766,7 +1889,10 @@ int lua_dragonbones_Animation_gotoAndPlay(lua_State* tolua_S)
 
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndPlay'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndPlay(arg0, arg1, arg2, arg3);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -1789,7 +1915,10 @@ int lua_dragonbones_Animation_gotoAndPlay(lua_State* tolua_S)
 
         ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndPlay'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndPlay(arg0, arg1, arg2, arg3, arg4);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -1815,7 +1944,10 @@ int lua_dragonbones_Animation_gotoAndPlay(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 7,&arg5);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndPlay'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndPlay(arg0, arg1, arg2, arg3, arg4, arg5);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -1844,7 +1976,10 @@ int lua_dragonbones_Animation_gotoAndPlay(lua_State* tolua_S)
 
         ok &= luaval_to_int32(tolua_S, 8,(int *)&arg6);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndPlay'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndPlay(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -1876,7 +2011,10 @@ int lua_dragonbones_Animation_gotoAndPlay(lua_State* tolua_S)
 
         ok &= luaval_to_boolean(tolua_S, 9,&arg7);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndPlay'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndPlay(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -1911,12 +2049,15 @@ int lua_dragonbones_Animation_gotoAndPlay(lua_State* tolua_S)
 
         ok &= luaval_to_boolean(tolua_S, 10,&arg8);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndPlay'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndPlay(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "gotoAndPlay",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:gotoAndPlay",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -1958,7 +2099,10 @@ int lua_dragonbones_Animation_getState(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_getState'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->getState(arg0);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -1972,12 +2116,15 @@ int lua_dragonbones_Animation_getState(lua_State* tolua_S)
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_getState'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->getState(arg0, arg1);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getState",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:getState",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2016,12 +2163,15 @@ int lua_dragonbones_Animation_getIsComplete(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_getIsComplete'", nullptr);
             return 0;
+        }
         bool ret = cobj->getIsComplete();
         tolua_pushboolean(tolua_S,(bool)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getIsComplete",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:getIsComplete",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2063,11 +2213,14 @@ int lua_dragonbones_Animation_advanceTime(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_advanceTime'", nullptr);
             return 0;
+        }
         cobj->advanceTime(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "advanceTime",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:advanceTime",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2106,12 +2259,15 @@ int lua_dragonbones_Animation_getIsPlaying(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_getIsPlaying'", nullptr);
             return 0;
+        }
         bool ret = cobj->getIsPlaying();
         tolua_pushboolean(tolua_S,(bool)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getIsPlaying",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:getIsPlaying",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2156,7 +2312,10 @@ int lua_dragonbones_Animation_gotoAndStop(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndStop'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndStop(arg0, arg1);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -2173,7 +2332,10 @@ int lua_dragonbones_Animation_gotoAndStop(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndStop'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndStop(arg0, arg1, arg2);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -2193,7 +2355,10 @@ int lua_dragonbones_Animation_gotoAndStop(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 5,&arg3);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndStop'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndStop(arg0, arg1, arg2, arg3);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -2216,7 +2381,10 @@ int lua_dragonbones_Animation_gotoAndStop(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 6,&arg4);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndStop'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndStop(arg0, arg1, arg2, arg3, arg4);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -2242,7 +2410,10 @@ int lua_dragonbones_Animation_gotoAndStop(lua_State* tolua_S)
 
         ok &= luaval_to_int32(tolua_S, 7,(int *)&arg5);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndStop'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndStop(arg0, arg1, arg2, arg3, arg4, arg5);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -2271,7 +2442,10 @@ int lua_dragonbones_Animation_gotoAndStop(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 8,&arg6);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndStop'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndStop(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
@@ -2303,12 +2477,15 @@ int lua_dragonbones_Animation_gotoAndStop(lua_State* tolua_S)
 
         ok &= luaval_to_int32(tolua_S, 9,(int *)&arg7);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_gotoAndStop'", nullptr);
             return 0;
+        }
         dragonBones::AnimationState* ret = cobj->gotoAndStop(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
         object_to_luaval<dragonBones::AnimationState>(tolua_S, "db.AnimationState",(dragonBones::AnimationState*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "gotoAndStop",argc, 2);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:gotoAndStop",argc, 2);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2347,12 +2524,15 @@ int lua_dragonbones_Animation_getTimeScale(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_getTimeScale'", nullptr);
             return 0;
+        }
         double ret = cobj->getTimeScale();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTimeScale",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:getTimeScale",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2378,13 +2558,16 @@ int lua_dragonbones_Animation_constructor(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Animation_constructor'", nullptr);
             return 0;
+        }
         cobj = new dragonBones::Animation();
         tolua_pushusertype(tolua_S,(void*)cobj,"db.Animation");
         tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Animation",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Animation:Animation",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2461,12 +2644,15 @@ int lua_dragonbones_Armature_getBone(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_getBone'", nullptr);
             return 0;
+        }
         dragonBones::Bone* ret = cobj->getBone(arg0);
         object_to_luaval<dragonBones::Bone>(tolua_S, "db.Bone",(dragonBones::Bone*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBone",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:getBone",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2505,12 +2691,15 @@ int lua_dragonbones_Armature_getAnimation(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_getAnimation'", nullptr);
             return 0;
+        }
         dragonBones::Animation* ret = cobj->getAnimation();
         object_to_luaval<dragonBones::Animation>(tolua_S, "db.Animation",(dragonBones::Animation*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAnimation",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:getAnimation",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2567,7 +2756,7 @@ int lua_dragonbones_Armature_addBone(lua_State* tolua_S)
         }
     }while(0);
     ok  = true;
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addBone",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "db.Armature:addBone",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2621,7 +2810,7 @@ int lua_dragonbones_Armature_removeSlot(lua_State* tolua_S)
         }
     }while(0);
     ok  = true;
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeSlot",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "db.Armature:removeSlot",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2663,12 +2852,15 @@ int lua_dragonbones_Armature_getSlot(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_getSlot'", nullptr);
             return 0;
+        }
         dragonBones::Slot* ret = cobj->getSlot(arg0);
         object_to_luaval<dragonBones::Slot>(tolua_S, "db.Slot",(dragonBones::Slot*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getSlot",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:getSlot",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2722,7 +2914,7 @@ int lua_dragonbones_Armature_removeBone(lua_State* tolua_S)
         }
     }while(0);
     ok  = true;
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeBone",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "db.Armature:removeBone",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2770,11 +2962,14 @@ int lua_dragonbones_Armature_replaceSlot(lua_State* tolua_S)
 
         ok &= luaval_to_object<dragonBones::Slot>(tolua_S, 4, "db.Slot",&arg2);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_replaceSlot'", nullptr);
             return 0;
+        }
         cobj->replaceSlot(arg0, arg1, arg2);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "replaceSlot",argc, 3);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:replaceSlot",argc, 3);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2813,12 +3008,15 @@ int lua_dragonbones_Armature_getDisplay(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_getDisplay'", nullptr);
             return 0;
+        }
         void* ret = cobj->getDisplay();
         #pragma warning NO CONVERSION FROM NATIVE FOR void*;
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplay",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:getDisplay",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2863,11 +3061,14 @@ int lua_dragonbones_Armature_addSlot(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_addSlot'", nullptr);
             return 0;
+        }
         cobj->addSlot(arg0, arg1);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addSlot",argc, 2);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:addSlot",argc, 2);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2907,14 +3108,18 @@ int lua_dragonbones_Armature_getSlotByDisplay(lua_State* tolua_S)
     {
         const void* arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*;
+        #pragma warning NO CONVERSION TO NATIVE FOR void*
+		ok = false;
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_getSlotByDisplay'", nullptr);
             return 0;
+        }
         dragonBones::Slot* ret = cobj->getSlotByDisplay(arg0);
         object_to_luaval<dragonBones::Slot>(tolua_S, "db.Slot",(dragonBones::Slot*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getSlotByDisplay",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:getSlotByDisplay",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -2954,14 +3159,18 @@ int lua_dragonbones_Armature_getBoneByDisplay(lua_State* tolua_S)
     {
         const void* arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*;
+        #pragma warning NO CONVERSION TO NATIVE FOR void*
+		ok = false;
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_getBoneByDisplay'", nullptr);
             return 0;
+        }
         dragonBones::Bone* ret = cobj->getBoneByDisplay(arg0);
         object_to_luaval<dragonBones::Bone>(tolua_S, "db.Bone",(dragonBones::Bone*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBoneByDisplay",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:getBoneByDisplay",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3000,12 +3209,15 @@ int lua_dragonbones_Armature_getArmatureData(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_getArmatureData'", nullptr);
             return 0;
+        }
         const dragonBones::ArmatureData* ret = cobj->getArmatureData();
         object_to_luaval<dragonBones::ArmatureData>(tolua_S, "db.ArmatureData",(dragonBones::ArmatureData*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getArmatureData",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:getArmatureData",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3054,7 +3266,7 @@ int lua_dragonbones_Armature_invalidUpdate(lua_State* tolua_S)
         }
     }while(0);
     ok  = true;
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "invalidUpdate",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "db.Armature:invalidUpdate",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3093,12 +3305,15 @@ int lua_dragonbones_Armature_getEventDispatcher(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_getEventDispatcher'", nullptr);
             return 0;
+        }
         dragonBones::IEventDispatcher* ret = cobj->getEventDispatcher();
         object_to_luaval<dragonBones::IEventDispatcher>(tolua_S, "db.IEventDispatcher",(dragonBones::IEventDispatcher*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getEventDispatcher",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:getEventDispatcher",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3137,11 +3352,14 @@ int lua_dragonbones_Armature_sortSlotsByZOrder(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_sortSlotsByZOrder'", nullptr);
             return 0;
+        }
         cobj->sortSlotsByZOrder();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "sortSlotsByZOrder",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:sortSlotsByZOrder",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3180,11 +3398,14 @@ int lua_dragonbones_Armature_dispose(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_dispose'", nullptr);
             return 0;
+        }
         cobj->dispose();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "dispose",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:dispose",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3258,12 +3479,15 @@ int lua_dragonbones_Slot_getZOrder(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Slot_getZOrder'", nullptr);
             return 0;
+        }
         double ret = cobj->getZOrder();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getZOrder",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Slot:getZOrder",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3305,7 +3529,10 @@ int lua_dragonbones_Slot_setChildArmature(lua_State* tolua_S)
 
         ok &= luaval_to_object<dragonBones::Armature>(tolua_S, 2, "db.Armature",&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Slot_setChildArmature'", nullptr);
             return 0;
+        }
         cobj->setChildArmature(arg0);
         return 0;
     }
@@ -3318,11 +3545,14 @@ int lua_dragonbones_Slot_setChildArmature(lua_State* tolua_S)
 
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Slot_setChildArmature'", nullptr);
             return 0;
+        }
         cobj->setChildArmature(arg0, arg1);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setChildArmature",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Slot:setChildArmature",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3361,12 +3591,15 @@ int lua_dragonbones_Slot_getDisplay(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Slot_getDisplay'", nullptr);
             return 0;
+        }
         void* ret = cobj->getDisplay();
         #pragma warning NO CONVERSION FROM NATIVE FOR void*;
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplay",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Slot:getDisplay",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3405,12 +3638,15 @@ int lua_dragonbones_Slot_isShowDisplay(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Slot_isShowDisplay'", nullptr);
             return 0;
+        }
         bool ret = cobj->isShowDisplay();
         tolua_pushboolean(tolua_S,(bool)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isShowDisplay",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Slot:isShowDisplay",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3450,9 +3686,13 @@ int lua_dragonbones_Slot_setDisplay(lua_State* tolua_S)
     {
         void* arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*;
+        #pragma warning NO CONVERSION TO NATIVE FOR void*
+		ok = false;
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Slot_setDisplay'", nullptr);
             return 0;
+        }
         cobj->setDisplay(arg0);
         return 0;
     }
@@ -3461,11 +3701,15 @@ int lua_dragonbones_Slot_setDisplay(lua_State* tolua_S)
         void* arg0;
         dragonBones::DisplayType arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*;
+        #pragma warning NO CONVERSION TO NATIVE FOR void*
+		ok = false;
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Slot_setDisplay'", nullptr);
             return 0;
+        }
         cobj->setDisplay(arg0, arg1);
         return 0;
     }
@@ -3475,22 +3719,73 @@ int lua_dragonbones_Slot_setDisplay(lua_State* tolua_S)
         dragonBones::DisplayType arg1;
         bool arg2;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*;
+        #pragma warning NO CONVERSION TO NATIVE FOR void*
+		ok = false;
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
         ok &= luaval_to_boolean(tolua_S, 4,&arg2);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Slot_setDisplay'", nullptr);
             return 0;
+        }
         cobj->setDisplay(arg0, arg1, arg2);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setDisplay",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Slot:setDisplay",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_Slot_setDisplay'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_dragonbones_Slot_getSlotData(lua_State* tolua_S)
+{
+    int argc = 0;
+    dragonBones::Slot* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"db.Slot",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (dragonBones::Slot*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_Slot_getSlotData'", nullptr);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Slot_getSlotData'", nullptr);
+            return 0;
+        }
+        dragonBones::SlotData* ret = cobj->getSlotData();
+        object_to_luaval<dragonBones::SlotData>(tolua_S, "db.SlotData",(dragonBones::SlotData*)ret);
+        return 1;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Slot:getSlotData",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_Slot_getSlotData'.",&tolua_err);
 #endif
 
     return 0;
@@ -3524,12 +3819,15 @@ int lua_dragonbones_Slot_getChildArmature(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Slot_getChildArmature'", nullptr);
             return 0;
+        }
         dragonBones::Armature* ret = cobj->getChildArmature();
         object_to_luaval<dragonBones::Armature>(tolua_S, "db.Armature",(dragonBones::Armature*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getChildArmature",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Slot:getChildArmature",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3571,11 +3869,14 @@ int lua_dragonbones_Slot_setZOrder(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Slot_setZOrder'", nullptr);
             return 0;
+        }
         cobj->setZOrder(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setZOrder",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Slot:setZOrder",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3614,12 +3915,15 @@ int lua_dragonbones_Slot_getDisplayIndex(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Slot_getDisplayIndex'", nullptr);
             return 0;
+        }
         int ret = cobj->getDisplayIndex();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayIndex",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Slot:getDisplayIndex",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3646,6 +3950,7 @@ int lua_register_dragonbones_Slot(lua_State* tolua_S)
         tolua_function(tolua_S,"getDisplay",lua_dragonbones_Slot_getDisplay);
         tolua_function(tolua_S,"isShowDisplay",lua_dragonbones_Slot_isShowDisplay);
         tolua_function(tolua_S,"setDisplay",lua_dragonbones_Slot_setDisplay);
+        tolua_function(tolua_S,"getSlotData",lua_dragonbones_Slot_getSlotData);
         tolua_function(tolua_S,"getChildArmature",lua_dragonbones_Slot_getChildArmature);
         tolua_function(tolua_S,"setZOrder",lua_dragonbones_Slot_setZOrder);
         tolua_function(tolua_S,"getDisplayIndex",lua_dragonbones_Slot_getDisplayIndex);
@@ -3685,11 +3990,14 @@ int lua_dragonbones_WorldClock_play(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_WorldClock_play'", nullptr);
             return 0;
+        }
         cobj->play();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "play",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.WorldClock:play",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3731,11 +4039,14 @@ int lua_dragonbones_WorldClock_setTimeScale(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_WorldClock_setTimeScale'", nullptr);
             return 0;
+        }
         cobj->setTimeScale(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTimeScale",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.WorldClock:setTimeScale",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3774,12 +4085,15 @@ int lua_dragonbones_WorldClock_getTime(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_WorldClock_getTime'", nullptr);
             return 0;
+        }
         double ret = cobj->getTime();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTime",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.WorldClock:getTime",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3818,11 +4132,14 @@ int lua_dragonbones_WorldClock_stop(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_WorldClock_stop'", nullptr);
             return 0;
+        }
         cobj->stop();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "stop",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.WorldClock:stop",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3861,11 +4178,14 @@ int lua_dragonbones_WorldClock_dispose(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_WorldClock_dispose'", nullptr);
             return 0;
+        }
         cobj->dispose();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "dispose",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.WorldClock:dispose",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3904,12 +4224,15 @@ int lua_dragonbones_WorldClock_getTimeScale(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_WorldClock_getTimeScale'", nullptr);
             return 0;
+        }
         double ret = cobj->getTimeScale();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTimeScale",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.WorldClock:getTimeScale",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -3937,12 +4260,15 @@ int lua_dragonbones_WorldClock_getInstance(lua_State* tolua_S)
     if (argc == 0)
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_WorldClock_getInstance'", nullptr);
             return 0;
+        }
         dragonBones::WorldClock* ret = dragonBones::WorldClock::getInstance();
         object_to_luaval<dragonBones::WorldClock>(tolua_S, "db.WorldClock",(dragonBones::WorldClock*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "getInstance",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "db.WorldClock:getInstance",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
@@ -3966,7 +4292,10 @@ int lua_dragonbones_WorldClock_constructor(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_WorldClock_constructor'", nullptr);
             return 0;
+        }
         cobj = new dragonBones::WorldClock();
         tolua_pushusertype(tolua_S,(void*)cobj,"db.WorldClock");
         tolua_register_gc(tolua_S,lua_gettop(tolua_S));
@@ -3978,7 +4307,10 @@ int lua_dragonbones_WorldClock_constructor(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_WorldClock_constructor'", nullptr);
             return 0;
+        }
         cobj = new dragonBones::WorldClock(arg0);
         tolua_pushusertype(tolua_S,(void*)cobj,"db.WorldClock");
         tolua_register_gc(tolua_S,lua_gettop(tolua_S));
@@ -3993,13 +4325,16 @@ int lua_dragonbones_WorldClock_constructor(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_WorldClock_constructor'", nullptr);
             return 0;
+        }
         cobj = new dragonBones::WorldClock(arg0, arg1);
         tolua_pushusertype(tolua_S,(void*)cobj,"db.WorldClock");
         tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "WorldClock",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.WorldClock:WorldClock",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4113,7 +4448,7 @@ int lua_dragonbones_BaseFactory_buildArmature(lua_State* tolua_S)
         }
     }while(0);
     ok  = true;
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "buildArmature",argc, 5);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "db.BaseFactory:buildArmature",argc, 5);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4155,7 +4490,10 @@ int lua_dragonbones_BaseFactory_removeDragonBonesData(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_removeDragonBonesData'", nullptr);
             return 0;
+        }
         cobj->removeDragonBonesData(arg0);
         return 0;
     }
@@ -4168,11 +4506,14 @@ int lua_dragonbones_BaseFactory_removeDragonBonesData(lua_State* tolua_S)
 
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_removeDragonBonesData'", nullptr);
             return 0;
+        }
         cobj->removeDragonBonesData(arg0, arg1);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeDragonBonesData",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.BaseFactory:removeDragonBonesData",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4214,7 +4555,10 @@ int lua_dragonbones_BaseFactory_addTextureAtlas(lua_State* tolua_S)
 
         ok &= luaval_to_object<dragonBones::ITextureAtlas>(tolua_S, 2, "db.ITextureAtlas",&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_addTextureAtlas'", nullptr);
             return 0;
+        }
         cobj->addTextureAtlas(arg0);
         return 0;
     }
@@ -4227,11 +4571,14 @@ int lua_dragonbones_BaseFactory_addTextureAtlas(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_addTextureAtlas'", nullptr);
             return 0;
+        }
         cobj->addTextureAtlas(arg0, arg1);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addTextureAtlas",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.BaseFactory:addTextureAtlas",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4273,7 +4620,10 @@ int lua_dragonbones_BaseFactory_addDragonBonesData(lua_State* tolua_S)
 
         ok &= luaval_to_object<dragonBones::DragonBonesData>(tolua_S, 2, "db.DragonBonesData",&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_addDragonBonesData'", nullptr);
             return 0;
+        }
         cobj->addDragonBonesData(arg0);
         return 0;
     }
@@ -4286,11 +4636,14 @@ int lua_dragonbones_BaseFactory_addDragonBonesData(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_addDragonBonesData'", nullptr);
             return 0;
+        }
         cobj->addDragonBonesData(arg0, arg1);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addDragonBonesData",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.BaseFactory:addDragonBonesData",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4329,7 +4682,10 @@ int lua_dragonbones_BaseFactory_dispose(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_dispose'", nullptr);
             return 0;
+        }
         cobj->dispose();
         return 0;
     }
@@ -4339,11 +4695,14 @@ int lua_dragonbones_BaseFactory_dispose(lua_State* tolua_S)
 
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_dispose'", nullptr);
             return 0;
+        }
         cobj->dispose(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "dispose",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.BaseFactory:dispose",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4385,12 +4744,15 @@ int lua_dragonbones_BaseFactory_getTextureAtlas(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_getTextureAtlas'", nullptr);
             return 0;
+        }
         dragonBones::ITextureAtlas* ret = cobj->getTextureAtlas(arg0);
         object_to_luaval<dragonBones::ITextureAtlas>(tolua_S, "db.ITextureAtlas",(dragonBones::ITextureAtlas*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextureAtlas",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.BaseFactory:getTextureAtlas",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4432,7 +4794,10 @@ int lua_dragonbones_BaseFactory_getTextureDisplay(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_getTextureDisplay'", nullptr);
             return 0;
+        }
         void* ret = cobj->getTextureDisplay(arg0);
         #pragma warning NO CONVERSION FROM NATIVE FOR void*;
         return 1;
@@ -4446,7 +4811,10 @@ int lua_dragonbones_BaseFactory_getTextureDisplay(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_getTextureDisplay'", nullptr);
             return 0;
+        }
         void* ret = cobj->getTextureDisplay(arg0, arg1);
         #pragma warning NO CONVERSION FROM NATIVE FOR void*;
         return 1;
@@ -4463,12 +4831,15 @@ int lua_dragonbones_BaseFactory_getTextureDisplay(lua_State* tolua_S)
 
         ok &= luaval_to_object<const dragonBones::DisplayData>(tolua_S, 4, "db.DisplayData",&arg2);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_getTextureDisplay'", nullptr);
             return 0;
+        }
         void* ret = cobj->getTextureDisplay(arg0, arg1, arg2);
         #pragma warning NO CONVERSION FROM NATIVE FOR void*;
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextureDisplay",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.BaseFactory:getTextureDisplay",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4510,7 +4881,10 @@ int lua_dragonbones_BaseFactory_removeTextureAtlas(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_removeTextureAtlas'", nullptr);
             return 0;
+        }
         cobj->removeTextureAtlas(arg0);
         return 0;
     }
@@ -4523,11 +4897,14 @@ int lua_dragonbones_BaseFactory_removeTextureAtlas(lua_State* tolua_S)
 
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_removeTextureAtlas'", nullptr);
             return 0;
+        }
         cobj->removeTextureAtlas(arg0, arg1);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeTextureAtlas",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.BaseFactory:removeTextureAtlas",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4569,12 +4946,15 @@ int lua_dragonbones_BaseFactory_getDragonBonesData(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_BaseFactory_getDragonBonesData'", nullptr);
             return 0;
+        }
         dragonBones::DragonBonesData* ret = cobj->getDragonBonesData(arg0);
         object_to_luaval<dragonBones::DragonBonesData>(tolua_S, "db.DragonBonesData",(dragonBones::DragonBonesData*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDragonBonesData",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.BaseFactory:getDragonBonesData",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4641,12 +5021,15 @@ int lua_dragonbones_DBCCSlot_getGlobalPosition(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCSlot_getGlobalPosition'", nullptr);
             return 0;
+        }
         cocos2d::Vec2 ret = cobj->getGlobalPosition();
         vec2_to_luaval(tolua_S, ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getGlobalPosition",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCSlot:getGlobalPosition",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4685,12 +5068,15 @@ int lua_dragonbones_DBCCSlot_getCCChildArmature(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCSlot_getCCChildArmature'", nullptr);
             return 0;
+        }
         dragonBones::DBCCArmature* ret = cobj->getCCChildArmature();
         object_to_luaval<dragonBones::DBCCArmature>(tolua_S, "db.DBCCArmature",(dragonBones::DBCCArmature*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCCChildArmature",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCSlot:getCCChildArmature",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4729,12 +5115,15 @@ int lua_dragonbones_DBCCSlot_getCCDisplay(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCSlot_getCCDisplay'", nullptr);
             return 0;
+        }
         cocos2d::Node* ret = cobj->getCCDisplay();
         object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCCDisplay",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCSlot:getCCDisplay",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4776,7 +5165,10 @@ int lua_dragonbones_DBCCSlot_setDisplayImage(lua_State* tolua_S)
 
         ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCSlot_setDisplayImage'", nullptr);
             return 0;
+        }
         cobj->setDisplayImage(arg0);
         return 0;
     }
@@ -4789,11 +5181,14 @@ int lua_dragonbones_DBCCSlot_setDisplayImage(lua_State* tolua_S)
 
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCSlot_setDisplayImage'", nullptr);
             return 0;
+        }
         cobj->setDisplayImage(arg0, arg1);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setDisplayImage",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCSlot:setDisplayImage",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4822,13 +5217,16 @@ int lua_dragonbones_DBCCSlot_constructor(lua_State* tolua_S)
 
         ok &= luaval_to_object<dragonBones::SlotData>(tolua_S, 2, "db.SlotData",&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCSlot_constructor'", nullptr);
             return 0;
+        }
         cobj = new dragonBones::DBCCSlot(arg0);
         tolua_pushusertype(tolua_S,(void*)cobj,"db.DBCCSlot");
         tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "DBCCSlot",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCSlot:DBCCSlot",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4891,12 +5289,15 @@ int lua_dragonbones_DBCCArmature_getCCEventDispatcher(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmature_getCCEventDispatcher'", nullptr);
             return 0;
+        }
         cocos2d::EventDispatcher* ret = cobj->getCCEventDispatcher();
         object_to_luaval<cocos2d::EventDispatcher>(tolua_S, "cc.EventDispatcher",(cocos2d::EventDispatcher*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCCEventDispatcher",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmature:getCCEventDispatcher",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4938,12 +5339,15 @@ int lua_dragonbones_DBCCArmature_getCCSlot(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmature_getCCSlot'", nullptr);
             return 0;
+        }
         dragonBones::DBCCSlot* ret = cobj->getCCSlot(arg0);
         object_to_luaval<dragonBones::DBCCSlot>(tolua_S, "db.DBCCSlot",(dragonBones::DBCCSlot*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCCSlot",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmature:getCCSlot",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -4982,12 +5386,15 @@ int lua_dragonbones_DBCCArmature_getCCDisplay(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmature_getCCDisplay'", nullptr);
             return 0;
+        }
         cocos2d::Node* ret = cobj->getCCDisplay();
         object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCCDisplay",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmature:getCCDisplay",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5026,12 +5433,15 @@ int lua_dragonbones_DBCCArmature_getCCBoundingBox(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmature_getCCBoundingBox'", nullptr);
             return 0;
+        }
         cocos2d::Rect ret = cobj->getCCBoundingBox();
         rect_to_luaval(tolua_S, ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCCBoundingBox",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmature:getCCBoundingBox",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5069,13 +5479,16 @@ int lua_dragonbones_DBCCArmature_constructor(lua_State* tolua_S)
 
         ok &= luaval_to_object<cocos2d::Node>(tolua_S, 5, "cc.Node",&arg3);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmature_constructor'", nullptr);
             return 0;
+        }
         cobj = new dragonBones::DBCCArmature(arg0, arg1, arg2, arg3);
         tolua_pushusertype(tolua_S,(void*)cobj,"db.DBCCArmature");
         tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "DBCCArmature",argc, 4);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmature:DBCCArmature",argc, 4);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5138,12 +5551,15 @@ int lua_dragonbones_DBCCArmatureNode_getAnimation(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_getAnimation'", nullptr);
             return 0;
+        }
         dragonBones::Animation* ret = cobj->getAnimation();
         object_to_luaval<dragonBones::Animation>(tolua_S, "db.Animation",(dragonBones::Animation*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAnimation",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:getAnimation",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5185,11 +5601,14 @@ int lua_dragonbones_DBCCArmatureNode_registerMovementEventHandler(lua_State* tol
 
         arg0 =  toluafix_ref_function(tolua_S,2,0);ok &= arg0 != 0;;
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_registerMovementEventHandler'", nullptr);
             return 0;
+        }
         cobj->registerMovementEventHandler(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "registerMovementEventHandler",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:registerMovementEventHandler",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5228,12 +5647,15 @@ int lua_dragonbones_DBCCArmatureNode_getCCEventDispatcher(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_getCCEventDispatcher'", nullptr);
             return 0;
+        }
         cocos2d::EventDispatcher* ret = cobj->getCCEventDispatcher();
         object_to_luaval<cocos2d::EventDispatcher>(tolua_S, "cc.EventDispatcher",(cocos2d::EventDispatcher*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCCEventDispatcher",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:getCCEventDispatcher",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5275,11 +5697,14 @@ int lua_dragonbones_DBCCArmatureNode_registerFrameEventHandler(lua_State* tolua_
 
         arg0 =  toluafix_ref_function(tolua_S,2,0);ok &= arg0 != 0;;
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_registerFrameEventHandler'", nullptr);
             return 0;
+        }
         cobj->registerFrameEventHandler(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "registerFrameEventHandler",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:registerFrameEventHandler",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5318,12 +5743,15 @@ int lua_dragonbones_DBCCArmatureNode_getArmature(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_getArmature'", nullptr);
             return 0;
+        }
         dragonBones::DBCCArmature* ret = cobj->getArmature();
         object_to_luaval<dragonBones::DBCCArmature>(tolua_S, "db.DBCCArmature",(dragonBones::DBCCArmature*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getArmature",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:getArmature",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5362,11 +5790,14 @@ int lua_dragonbones_DBCCArmatureNode_unregisterMovementEventHandler(lua_State* t
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_unregisterMovementEventHandler'", nullptr);
             return 0;
+        }
         cobj->unregisterMovementEventHandler();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "unregisterMovementEventHandler",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:unregisterMovementEventHandler",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5408,12 +5839,15 @@ int lua_dragonbones_DBCCArmatureNode_getCCSlot(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_getCCSlot'", nullptr);
             return 0;
+        }
         dragonBones::DBCCSlot* ret = cobj->getCCSlot(arg0);
         object_to_luaval<dragonBones::DBCCSlot>(tolua_S, "db.DBCCSlot",(dragonBones::DBCCSlot*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCCSlot",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:getCCSlot",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5452,66 +5886,19 @@ int lua_dragonbones_DBCCArmatureNode_unregisterFrameEventHandler(lua_State* tolu
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_unregisterFrameEventHandler'", nullptr);
             return 0;
+        }
         cobj->unregisterFrameEventHandler();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "unregisterFrameEventHandler",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:unregisterFrameEventHandler",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmatureNode_unregisterFrameEventHandler'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_dragonbones_DBCCArmatureNode_initWithDBCCArmature(lua_State* tolua_S)
-{
-    int argc = 0;
-    dragonBones::DBCCArmatureNode* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"db.DBCCArmatureNode",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (dragonBones::DBCCArmatureNode*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmatureNode_initWithDBCCArmature'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
-    {
-        dragonBones::DBCCArmature* arg0;
-        dragonBones::WorldClock* arg1;
-
-        ok &= luaval_to_object<dragonBones::DBCCArmature>(tolua_S, 2, "db.DBCCArmature",&arg0);
-
-        ok &= luaval_to_object<dragonBones::WorldClock>(tolua_S, 3, "db.WorldClock",&arg1);
-        if(!ok)
-            return 0;
-        bool ret = cobj->initWithDBCCArmature(arg0, arg1);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithDBCCArmature",argc, 2);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmatureNode_initWithDBCCArmature'.",&tolua_err);
 #endif
 
     return 0;
@@ -5545,12 +5932,15 @@ int lua_dragonbones_DBCCArmatureNode_getCCDisplay(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_getCCDisplay'", nullptr);
             return 0;
+        }
         cocos2d::Node* ret = cobj->getCCDisplay();
         object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCCDisplay",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:getCCDisplay",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5592,11 +5982,14 @@ int lua_dragonbones_DBCCArmatureNode_advanceTime(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_advanceTime'", nullptr);
             return 0;
+        }
         cobj->advanceTime(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "advanceTime",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:advanceTime",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5626,12 +6019,15 @@ int lua_dragonbones_DBCCArmatureNode_create(lua_State* tolua_S)
         dragonBones::DBCCArmature* arg0;
         ok &= luaval_to_object<dragonBones::DBCCArmature>(tolua_S, 2, "db.DBCCArmature",&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_create'", nullptr);
             return 0;
+        }
         dragonBones::DBCCArmatureNode* ret = dragonBones::DBCCArmatureNode::create(arg0);
         object_to_luaval<dragonBones::DBCCArmatureNode>(tolua_S, "db.DBCCArmatureNode",(dragonBones::DBCCArmatureNode*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "db.DBCCArmatureNode:create",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
@@ -5661,12 +6057,15 @@ int lua_dragonbones_DBCCArmatureNode_createWithWorldClock(lua_State* tolua_S)
         ok &= luaval_to_object<dragonBones::DBCCArmature>(tolua_S, 2, "db.DBCCArmature",&arg0);
         ok &= luaval_to_object<dragonBones::WorldClock>(tolua_S, 3, "db.WorldClock",&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_createWithWorldClock'", nullptr);
             return 0;
+        }
         dragonBones::DBCCArmatureNode* ret = dragonBones::DBCCArmatureNode::createWithWorldClock(arg0, arg1);
         object_to_luaval<dragonBones::DBCCArmatureNode>(tolua_S, "db.DBCCArmatureNode",(dragonBones::DBCCArmatureNode*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithWorldClock",argc, 2);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "db.DBCCArmatureNode:createWithWorldClock",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
@@ -5690,7 +6089,10 @@ int lua_dragonbones_DBCCArmatureNode_constructor(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_constructor'", nullptr);
             return 0;
+        }
         cobj = new dragonBones::DBCCArmatureNode();
         cobj->autorelease();
         int ID =  (int)cobj->_ID ;
@@ -5698,7 +6100,7 @@ int lua_dragonbones_DBCCArmatureNode_constructor(lua_State* tolua_S)
         toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"db.DBCCArmatureNode");
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "DBCCArmatureNode",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:DBCCArmatureNode",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5729,7 +6131,6 @@ int lua_register_dragonbones_DBCCArmatureNode(lua_State* tolua_S)
         tolua_function(tolua_S,"unregisterMovementEventHandler",lua_dragonbones_DBCCArmatureNode_unregisterMovementEventHandler);
         tolua_function(tolua_S,"getCCSlot",lua_dragonbones_DBCCArmatureNode_getCCSlot);
         tolua_function(tolua_S,"unregisterFrameEventHandler",lua_dragonbones_DBCCArmatureNode_unregisterFrameEventHandler);
-        tolua_function(tolua_S,"initWithDBCCArmature",lua_dragonbones_DBCCArmatureNode_initWithDBCCArmature);
         tolua_function(tolua_S,"getCCDisplay",lua_dragonbones_DBCCArmatureNode_getCCDisplay);
         tolua_function(tolua_S,"advanceTime",lua_dragonbones_DBCCArmatureNode_advanceTime);
         tolua_function(tolua_S,"create", lua_dragonbones_DBCCArmatureNode_create);
@@ -5818,7 +6219,7 @@ int lua_dragonbones_DBCCFactory_buildArmatureNode(lua_State* tolua_S)
         }
     }while(0);
     ok  = true;
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "buildArmatureNode",argc, 5);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "db.DBCCFactory:buildArmatureNode",argc, 5);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5860,7 +6261,10 @@ int lua_dragonbones_DBCCFactory_hasDragonBones(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCFactory_hasDragonBones'", nullptr);
             return 0;
+        }
         bool ret = cobj->hasDragonBones(arg0);
         tolua_pushboolean(tolua_S,(bool)ret);
         return 1;
@@ -5874,7 +6278,10 @@ int lua_dragonbones_DBCCFactory_hasDragonBones(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCFactory_hasDragonBones'", nullptr);
             return 0;
+        }
         bool ret = cobj->hasDragonBones(arg0, arg1);
         tolua_pushboolean(tolua_S,(bool)ret);
         return 1;
@@ -5891,12 +6298,15 @@ int lua_dragonbones_DBCCFactory_hasDragonBones(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 4,&arg2);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCFactory_hasDragonBones'", nullptr);
             return 0;
+        }
         bool ret = cobj->hasDragonBones(arg0, arg1, arg2);
         tolua_pushboolean(tolua_S,(bool)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "hasDragonBones",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCFactory:hasDragonBones",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5938,7 +6348,10 @@ int lua_dragonbones_DBCCFactory_loadTextureAtlas(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCFactory_loadTextureAtlas'", nullptr);
             return 0;
+        }
         dragonBones::ITextureAtlas* ret = cobj->loadTextureAtlas(arg0);
         object_to_luaval<dragonBones::ITextureAtlas>(tolua_S, "db.ITextureAtlas",(dragonBones::ITextureAtlas*)ret);
         return 1;
@@ -5952,12 +6365,15 @@ int lua_dragonbones_DBCCFactory_loadTextureAtlas(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCFactory_loadTextureAtlas'", nullptr);
             return 0;
+        }
         dragonBones::ITextureAtlas* ret = cobj->loadTextureAtlas(arg0, arg1);
         object_to_luaval<dragonBones::ITextureAtlas>(tolua_S, "db.ITextureAtlas",(dragonBones::ITextureAtlas*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadTextureAtlas",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCFactory:loadTextureAtlas",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -5996,11 +6412,14 @@ int lua_dragonbones_DBCCFactory_refreshAllTextureAtlasTexture(lua_State* tolua_S
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCFactory_refreshAllTextureAtlasTexture'", nullptr);
             return 0;
+        }
         cobj->refreshAllTextureAtlasTexture();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "refreshAllTextureAtlasTexture",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCFactory:refreshAllTextureAtlasTexture",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -6042,11 +6461,14 @@ int lua_dragonbones_DBCCFactory_refreshTextureAtlasTexture(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCFactory_refreshTextureAtlasTexture'", nullptr);
             return 0;
+        }
         cobj->refreshTextureAtlasTexture(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "refreshTextureAtlasTexture",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCFactory:refreshTextureAtlasTexture",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -6088,7 +6510,10 @@ int lua_dragonbones_DBCCFactory_loadDragonBonesData(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCFactory_loadDragonBonesData'", nullptr);
             return 0;
+        }
         dragonBones::DragonBonesData* ret = cobj->loadDragonBonesData(arg0);
         object_to_luaval<dragonBones::DragonBonesData>(tolua_S, "db.DragonBonesData",(dragonBones::DragonBonesData*)ret);
         return 1;
@@ -6102,12 +6527,15 @@ int lua_dragonbones_DBCCFactory_loadDragonBonesData(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCFactory_loadDragonBonesData'", nullptr);
             return 0;
+        }
         dragonBones::DragonBonesData* ret = cobj->loadDragonBonesData(arg0, arg1);
         object_to_luaval<dragonBones::DragonBonesData>(tolua_S, "db.DragonBonesData",(dragonBones::DragonBonesData*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadDragonBonesData",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCFactory:loadDragonBonesData",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -6135,11 +6563,14 @@ int lua_dragonbones_DBCCFactory_destroyInstance(lua_State* tolua_S)
     if (argc == 0)
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCFactory_destroyInstance'", nullptr);
             return 0;
+        }
         dragonBones::DBCCFactory::destroyInstance();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "destroyInstance",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "db.DBCCFactory:destroyInstance",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
@@ -6165,12 +6596,15 @@ int lua_dragonbones_DBCCFactory_getInstance(lua_State* tolua_S)
     if (argc == 0)
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCFactory_getInstance'", nullptr);
             return 0;
+        }
         dragonBones::DBCCFactory* ret = dragonBones::DBCCFactory::getInstance();
         object_to_luaval<dragonBones::DBCCFactory>(tolua_S, "db.DBCCFactory",(dragonBones::DBCCFactory*)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "getInstance",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "db.DBCCFactory:getInstance",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
@@ -6194,13 +6628,16 @@ int lua_dragonbones_DBCCFactory_constructor(lua_State* tolua_S)
     if (argc == 0) 
     {
         if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCFactory_constructor'", nullptr);
             return 0;
+        }
         cobj = new dragonBones::DBCCFactory();
         tolua_pushusertype(tolua_S,(void*)cobj,"db.DBCCFactory");
         tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "DBCCFactory",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCFactory:DBCCFactory",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
