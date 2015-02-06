@@ -30,6 +30,12 @@ LOCAL_C_INCLUDES := \
 $(LOCAL_PATH)/.. \
 $(LOCAL_PATH)/../../.. 
 
+#liblua
+LOCAL_C_INCLUDES += \
+$(LOCAL_PATH)/../../../../../scripting/lua-bindings/manual \
+$(LOCAL_PATH)/../../../../../../external/lua/tolua \
+$(LOCAL_PATH)/../../../../../../external/lua/luajit/include
+
 LOCAL_EXPORT_C_INCLUDES := \
 $(LOCAL_PATH)/.. \
 $(LOCAL_PATH)/../../.. 
