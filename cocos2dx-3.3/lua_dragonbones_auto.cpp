@@ -2924,7 +2924,7 @@ int lua_dragonbones_Armature_removeBone(lua_State* tolua_S)
 
     return 0;
 }
-int lua_dragonbones_Armature_replaceSlot(lua_State* tolua_S)
+int lua_dragonbones_Armature_isInheritAnimation(lua_State* tolua_S)
 {
     int argc = 0;
     dragonBones::Armature* cobj = nullptr;
@@ -2944,37 +2944,29 @@ int lua_dragonbones_Armature_replaceSlot(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_Armature_replaceSlot'", nullptr);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_Armature_isInheritAnimation'", nullptr);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 0) 
     {
-        std::string arg0;
-        std::string arg1;
-        dragonBones::Slot* arg2;
-
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0, "db.Armature:replaceSlot");
-
-        ok &= luaval_to_std_string(tolua_S, 3,&arg1, "db.Armature:replaceSlot");
-
-        ok &= luaval_to_object<dragonBones::Slot>(tolua_S, 4, "db.Slot",&arg2);
         if(!ok)
         {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_replaceSlot'", nullptr);
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_isInheritAnimation'", nullptr);
             return 0;
         }
-        cobj->replaceSlot(arg0, arg1, arg2);
-        return 0;
+        bool ret = cobj->isInheritAnimation();
+        tolua_pushboolean(tolua_S,(bool)ret);
+        return 1;
     }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:replaceSlot",argc, 3);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:isInheritAnimation",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_Armature_replaceSlot'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_Armature_isInheritAnimation'.",&tolua_err);
 #endif
 
     return 0;
@@ -3026,7 +3018,7 @@ int lua_dragonbones_Armature_getDisplay(lua_State* tolua_S)
 
     return 0;
 }
-int lua_dragonbones_Armature_addSlot(lua_State* tolua_S)
+int lua_dragonbones_Armature_setInheritAnimation(lua_State* tolua_S)
 {
     int argc = 0;
     dragonBones::Armature* cobj = nullptr;
@@ -3046,34 +3038,31 @@ int lua_dragonbones_Armature_addSlot(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_Armature_addSlot'", nullptr);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_Armature_setInheritAnimation'", nullptr);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 1) 
     {
-        dragonBones::Slot* arg0;
-        std::string arg1;
+        bool arg0;
 
-        ok &= luaval_to_object<dragonBones::Slot>(tolua_S, 2, "db.Slot",&arg0);
-
-        ok &= luaval_to_std_string(tolua_S, 3,&arg1, "db.Armature:addSlot");
+        ok &= luaval_to_boolean(tolua_S, 2,&arg0, "db.Armature:setInheritAnimation");
         if(!ok)
         {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_addSlot'", nullptr);
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_setInheritAnimation'", nullptr);
             return 0;
         }
-        cobj->addSlot(arg0, arg1);
+        cobj->setInheritAnimation(arg0);
         return 0;
     }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:addSlot",argc, 2);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:setInheritAnimation",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_Armature_addSlot'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_Armature_setInheritAnimation'.",&tolua_err);
 #endif
 
     return 0;
@@ -3276,6 +3265,58 @@ int lua_dragonbones_Armature_invalidUpdate(lua_State* tolua_S)
 
     return 0;
 }
+int lua_dragonbones_Armature_addSlot(lua_State* tolua_S)
+{
+    int argc = 0;
+    dragonBones::Armature* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"db.Armature",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (dragonBones::Armature*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_Armature_addSlot'", nullptr);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 2) 
+    {
+        dragonBones::Slot* arg0;
+        std::string arg1;
+
+        ok &= luaval_to_object<dragonBones::Slot>(tolua_S, 2, "db.Slot",&arg0);
+
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1, "db.Armature:addSlot");
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_addSlot'", nullptr);
+            return 0;
+        }
+        cobj->addSlot(arg0, arg1);
+        return 0;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:addSlot",argc, 2);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_Armature_addSlot'.",&tolua_err);
+#endif
+
+    return 0;
+}
 int lua_dragonbones_Armature_getEventDispatcher(lua_State* tolua_S)
 {
     int argc = 0;
@@ -3319,6 +3360,61 @@ int lua_dragonbones_Armature_getEventDispatcher(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_Armature_getEventDispatcher'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_dragonbones_Armature_replaceSlot(lua_State* tolua_S)
+{
+    int argc = 0;
+    dragonBones::Armature* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"db.Armature",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (dragonBones::Armature*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_Armature_replaceSlot'", nullptr);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 3) 
+    {
+        std::string arg0;
+        std::string arg1;
+        dragonBones::Slot* arg2;
+
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0, "db.Armature:replaceSlot");
+
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1, "db.Armature:replaceSlot");
+
+        ok &= luaval_to_object<dragonBones::Slot>(tolua_S, 4, "db.Slot",&arg2);
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_Armature_replaceSlot'", nullptr);
+            return 0;
+        }
+        cobj->replaceSlot(arg0, arg1, arg2);
+        return 0;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.Armature:replaceSlot",argc, 3);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_Armature_replaceSlot'.",&tolua_err);
 #endif
 
     return 0;
@@ -3433,14 +3529,16 @@ int lua_register_dragonbones_Armature(lua_State* tolua_S)
         tolua_function(tolua_S,"removeSlot",lua_dragonbones_Armature_removeSlot);
         tolua_function(tolua_S,"getSlot",lua_dragonbones_Armature_getSlot);
         tolua_function(tolua_S,"removeBone",lua_dragonbones_Armature_removeBone);
-        tolua_function(tolua_S,"replaceSlot",lua_dragonbones_Armature_replaceSlot);
+        tolua_function(tolua_S,"isInheritAnimation",lua_dragonbones_Armature_isInheritAnimation);
         tolua_function(tolua_S,"getDisplay",lua_dragonbones_Armature_getDisplay);
-        tolua_function(tolua_S,"addSlot",lua_dragonbones_Armature_addSlot);
+        tolua_function(tolua_S,"setInheritAnimation",lua_dragonbones_Armature_setInheritAnimation);
         tolua_function(tolua_S,"getSlotByDisplay",lua_dragonbones_Armature_getSlotByDisplay);
         tolua_function(tolua_S,"getBoneByDisplay",lua_dragonbones_Armature_getBoneByDisplay);
         tolua_function(tolua_S,"getArmatureData",lua_dragonbones_Armature_getArmatureData);
         tolua_function(tolua_S,"invalidUpdate",lua_dragonbones_Armature_invalidUpdate);
+        tolua_function(tolua_S,"addSlot",lua_dragonbones_Armature_addSlot);
         tolua_function(tolua_S,"getEventDispatcher",lua_dragonbones_Armature_getEventDispatcher);
+        tolua_function(tolua_S,"replaceSlot",lua_dragonbones_Armature_replaceSlot);
         tolua_function(tolua_S,"sortSlotsByZOrder",lua_dragonbones_Armature_sortSlotsByZOrder);
         tolua_function(tolua_S,"dispose",lua_dragonbones_Armature_dispose);
     tolua_endmodule(tolua_S);
@@ -5260,6 +5358,102 @@ int lua_register_dragonbones_DBCCSlot(lua_State* tolua_S)
     return 1;
 }
 
+int lua_dragonbones_DBCCArmature_getCCBoundingBox(lua_State* tolua_S)
+{
+    int argc = 0;
+    dragonBones::DBCCArmature* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"db.DBCCArmature",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (dragonBones::DBCCArmature*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmature_getCCBoundingBox'", nullptr);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmature_getCCBoundingBox'", nullptr);
+            return 0;
+        }
+        cocos2d::Rect ret = cobj->getCCBoundingBox();
+        rect_to_luaval(tolua_S, ret);
+        return 1;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmature:getCCBoundingBox",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmature_getCCBoundingBox'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_dragonbones_DBCCArmature_registerAnimationEventHandler(lua_State* tolua_S)
+{
+    int argc = 0;
+    dragonBones::DBCCArmature* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"db.DBCCArmature",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (dragonBones::DBCCArmature*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmature_registerAnimationEventHandler'", nullptr);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        cocos2d::LUA_FUNCTION arg0;
+
+        arg0 =  toluafix_ref_function(tolua_S,2,0);ok &= arg0 != 0;;
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmature_registerAnimationEventHandler'", nullptr);
+            return 0;
+        }
+        cobj->registerAnimationEventHandler(arg0);
+        return 0;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmature:registerAnimationEventHandler",argc, 1);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmature_registerAnimationEventHandler'.",&tolua_err);
+#endif
+
+    return 0;
+}
 int lua_dragonbones_DBCCArmature_getCCEventDispatcher(lua_State* tolua_S)
 {
     int argc = 0;
@@ -5303,6 +5497,151 @@ int lua_dragonbones_DBCCArmature_getCCEventDispatcher(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmature_getCCEventDispatcher'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_dragonbones_DBCCArmature_getArmatureNode(lua_State* tolua_S)
+{
+    int argc = 0;
+    dragonBones::DBCCArmature* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"db.DBCCArmature",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (dragonBones::DBCCArmature*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmature_getArmatureNode'", nullptr);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmature_getArmatureNode'", nullptr);
+            return 0;
+        }
+        dragonBones::DBCCArmatureNode* ret = cobj->getArmatureNode();
+        object_to_luaval<dragonBones::DBCCArmatureNode>(tolua_S, "db.DBCCArmatureNode",(dragonBones::DBCCArmatureNode*)ret);
+        return 1;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmature:getArmatureNode",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmature_getArmatureNode'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_dragonbones_DBCCArmature_registerFrameEventHandler(lua_State* tolua_S)
+{
+    int argc = 0;
+    dragonBones::DBCCArmature* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"db.DBCCArmature",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (dragonBones::DBCCArmature*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmature_registerFrameEventHandler'", nullptr);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        cocos2d::LUA_FUNCTION arg0;
+
+        arg0 =  toluafix_ref_function(tolua_S,2,0);ok &= arg0 != 0;;
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmature_registerFrameEventHandler'", nullptr);
+            return 0;
+        }
+        cobj->registerFrameEventHandler(arg0);
+        return 0;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmature:registerFrameEventHandler",argc, 1);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmature_registerFrameEventHandler'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_dragonbones_DBCCArmature_setArmatureNode(lua_State* tolua_S)
+{
+    int argc = 0;
+    dragonBones::DBCCArmature* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"db.DBCCArmature",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (dragonBones::DBCCArmature*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmature_setArmatureNode'", nullptr);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        dragonBones::DBCCArmatureNode* arg0;
+
+        ok &= luaval_to_object<dragonBones::DBCCArmatureNode>(tolua_S, 2, "db.DBCCArmatureNode",&arg0);
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmature_setArmatureNode'", nullptr);
+            return 0;
+        }
+        cobj->setArmatureNode(arg0);
+        return 0;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmature:setArmatureNode",argc, 1);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmature_setArmatureNode'.",&tolua_err);
 #endif
 
     return 0;
@@ -5357,6 +5696,52 @@ int lua_dragonbones_DBCCArmature_getCCSlot(lua_State* tolua_S)
 
     return 0;
 }
+int lua_dragonbones_DBCCArmature_unregisterFrameEventHandler(lua_State* tolua_S)
+{
+    int argc = 0;
+    dragonBones::DBCCArmature* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"db.DBCCArmature",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (dragonBones::DBCCArmature*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmature_unregisterFrameEventHandler'", nullptr);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmature_unregisterFrameEventHandler'", nullptr);
+            return 0;
+        }
+        cobj->unregisterFrameEventHandler();
+        return 0;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmature:unregisterFrameEventHandler",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmature_unregisterFrameEventHandler'.",&tolua_err);
+#endif
+
+    return 0;
+}
 int lua_dragonbones_DBCCArmature_getCCDisplay(lua_State* tolua_S)
 {
     int argc = 0;
@@ -5404,7 +5789,7 @@ int lua_dragonbones_DBCCArmature_getCCDisplay(lua_State* tolua_S)
 
     return 0;
 }
-int lua_dragonbones_DBCCArmature_getCCBoundingBox(lua_State* tolua_S)
+int lua_dragonbones_DBCCArmature_unregisterAnimationEventHandler(lua_State* tolua_S)
 {
     int argc = 0;
     dragonBones::DBCCArmature* cobj = nullptr;
@@ -5424,7 +5809,7 @@ int lua_dragonbones_DBCCArmature_getCCBoundingBox(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmature_getCCBoundingBox'", nullptr);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmature_unregisterAnimationEventHandler'", nullptr);
         return 0;
     }
 #endif
@@ -5434,19 +5819,18 @@ int lua_dragonbones_DBCCArmature_getCCBoundingBox(lua_State* tolua_S)
     {
         if(!ok)
         {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmature_getCCBoundingBox'", nullptr);
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmature_unregisterAnimationEventHandler'", nullptr);
             return 0;
         }
-        cocos2d::Rect ret = cobj->getCCBoundingBox();
-        rect_to_luaval(tolua_S, ret);
-        return 1;
+        cobj->unregisterAnimationEventHandler();
+        return 0;
     }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmature:getCCBoundingBox",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmature:unregisterAnimationEventHandler",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmature_getCCBoundingBox'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmature_unregisterAnimationEventHandler'.",&tolua_err);
 #endif
 
     return 0;
@@ -5511,10 +5895,16 @@ int lua_register_dragonbones_DBCCArmature(lua_State* tolua_S)
 
     tolua_beginmodule(tolua_S,"DBCCArmature");
         tolua_function(tolua_S,"new",lua_dragonbones_DBCCArmature_constructor);
-        tolua_function(tolua_S,"getCCEventDispatcher",lua_dragonbones_DBCCArmature_getCCEventDispatcher);
-        tolua_function(tolua_S,"getCCSlot",lua_dragonbones_DBCCArmature_getCCSlot);
-        tolua_function(tolua_S,"getCCDisplay",lua_dragonbones_DBCCArmature_getCCDisplay);
         tolua_function(tolua_S,"getCCBoundingBox",lua_dragonbones_DBCCArmature_getCCBoundingBox);
+        tolua_function(tolua_S,"registerAnimationEventHandler",lua_dragonbones_DBCCArmature_registerAnimationEventHandler);
+        tolua_function(tolua_S,"getCCEventDispatcher",lua_dragonbones_DBCCArmature_getCCEventDispatcher);
+        tolua_function(tolua_S,"getArmatureNode",lua_dragonbones_DBCCArmature_getArmatureNode);
+        tolua_function(tolua_S,"registerFrameEventHandler",lua_dragonbones_DBCCArmature_registerFrameEventHandler);
+        tolua_function(tolua_S,"setArmatureNode",lua_dragonbones_DBCCArmature_setArmatureNode);
+        tolua_function(tolua_S,"getCCSlot",lua_dragonbones_DBCCArmature_getCCSlot);
+        tolua_function(tolua_S,"unregisterFrameEventHandler",lua_dragonbones_DBCCArmature_unregisterFrameEventHandler);
+        tolua_function(tolua_S,"getCCDisplay",lua_dragonbones_DBCCArmature_getCCDisplay);
+        tolua_function(tolua_S,"unregisterAnimationEventHandler",lua_dragonbones_DBCCArmature_unregisterAnimationEventHandler);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(dragonBones::DBCCArmature).name();
     g_luaType[typeName] = "db.DBCCArmature";
@@ -5522,7 +5912,7 @@ int lua_register_dragonbones_DBCCArmature(lua_State* tolua_S)
     return 1;
 }
 
-int lua_dragonbones_DBCCArmatureNode_getAnimation(lua_State* tolua_S)
+int lua_dragonbones_DBCCArmatureNode_registerAnimationEventHandler(lua_State* tolua_S)
 {
     int argc = 0;
     dragonBones::DBCCArmatureNode* cobj = nullptr;
@@ -5542,54 +5932,7 @@ int lua_dragonbones_DBCCArmatureNode_getAnimation(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmatureNode_getAnimation'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_getAnimation'", nullptr);
-            return 0;
-        }
-        dragonBones::Animation* ret = cobj->getAnimation();
-        object_to_luaval<dragonBones::Animation>(tolua_S, "db.Animation",(dragonBones::Animation*)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:getAnimation",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmatureNode_getAnimation'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_dragonbones_DBCCArmatureNode_registerMovementEventHandler(lua_State* tolua_S)
-{
-    int argc = 0;
-    dragonBones::DBCCArmatureNode* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"db.DBCCArmatureNode",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (dragonBones::DBCCArmatureNode*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmatureNode_registerMovementEventHandler'", nullptr);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmatureNode_registerAnimationEventHandler'", nullptr);
         return 0;
     }
 #endif
@@ -5602,18 +5945,18 @@ int lua_dragonbones_DBCCArmatureNode_registerMovementEventHandler(lua_State* tol
         arg0 =  toluafix_ref_function(tolua_S,2,0);ok &= arg0 != 0;;
         if(!ok)
         {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_registerMovementEventHandler'", nullptr);
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_registerAnimationEventHandler'", nullptr);
             return 0;
         }
-        cobj->registerMovementEventHandler(arg0);
+        cobj->registerAnimationEventHandler(arg0);
         return 0;
     }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:registerMovementEventHandler",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:registerAnimationEventHandler",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmatureNode_registerMovementEventHandler'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmatureNode_registerAnimationEventHandler'.",&tolua_err);
 #endif
 
     return 0;
@@ -5714,6 +6057,53 @@ int lua_dragonbones_DBCCArmatureNode_registerFrameEventHandler(lua_State* tolua_
 
     return 0;
 }
+int lua_dragonbones_DBCCArmatureNode_getAnimation(lua_State* tolua_S)
+{
+    int argc = 0;
+    dragonBones::DBCCArmatureNode* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"db.DBCCArmatureNode",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (dragonBones::DBCCArmatureNode*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmatureNode_getAnimation'", nullptr);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_getAnimation'", nullptr);
+            return 0;
+        }
+        dragonBones::Animation* ret = cobj->getAnimation();
+        object_to_luaval<dragonBones::Animation>(tolua_S, "db.Animation",(dragonBones::Animation*)ret);
+        return 1;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:getAnimation",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmatureNode_getAnimation'.",&tolua_err);
+#endif
+
+    return 0;
+}
 int lua_dragonbones_DBCCArmatureNode_getArmature(lua_State* tolua_S)
 {
     int argc = 0;
@@ -5757,52 +6147,6 @@ int lua_dragonbones_DBCCArmatureNode_getArmature(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmatureNode_getArmature'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_dragonbones_DBCCArmatureNode_unregisterMovementEventHandler(lua_State* tolua_S)
-{
-    int argc = 0;
-    dragonBones::DBCCArmatureNode* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"db.DBCCArmatureNode",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (dragonBones::DBCCArmatureNode*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmatureNode_unregisterMovementEventHandler'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_unregisterMovementEventHandler'", nullptr);
-            return 0;
-        }
-        cobj->unregisterMovementEventHandler();
-        return 0;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:unregisterMovementEventHandler",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmatureNode_unregisterMovementEventHandler'.",&tolua_err);
 #endif
 
     return 0;
@@ -5999,6 +6343,52 @@ int lua_dragonbones_DBCCArmatureNode_advanceTime(lua_State* tolua_S)
 
     return 0;
 }
+int lua_dragonbones_DBCCArmatureNode_unregisterAnimationEventHandler(lua_State* tolua_S)
+{
+    int argc = 0;
+    dragonBones::DBCCArmatureNode* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"db.DBCCArmatureNode",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (dragonBones::DBCCArmatureNode*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_dragonbones_DBCCArmatureNode_unregisterAnimationEventHandler'", nullptr);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCArmatureNode_unregisterAnimationEventHandler'", nullptr);
+            return 0;
+        }
+        cobj->unregisterAnimationEventHandler();
+        return 0;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "db.DBCCArmatureNode:unregisterAnimationEventHandler",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCArmatureNode_unregisterAnimationEventHandler'.",&tolua_err);
+#endif
+
+    return 0;
+}
 int lua_dragonbones_DBCCArmatureNode_create(lua_State* tolua_S)
 {
     int argc = 0;
@@ -6123,16 +6513,16 @@ int lua_register_dragonbones_DBCCArmatureNode(lua_State* tolua_S)
 
     tolua_beginmodule(tolua_S,"DBCCArmatureNode");
         tolua_function(tolua_S,"new",lua_dragonbones_DBCCArmatureNode_constructor);
-        tolua_function(tolua_S,"getAnimation",lua_dragonbones_DBCCArmatureNode_getAnimation);
-        tolua_function(tolua_S,"registerMovementEventHandler",lua_dragonbones_DBCCArmatureNode_registerMovementEventHandler);
+        tolua_function(tolua_S,"registerAnimationEventHandler",lua_dragonbones_DBCCArmatureNode_registerAnimationEventHandler);
         tolua_function(tolua_S,"getCCEventDispatcher",lua_dragonbones_DBCCArmatureNode_getCCEventDispatcher);
         tolua_function(tolua_S,"registerFrameEventHandler",lua_dragonbones_DBCCArmatureNode_registerFrameEventHandler);
+        tolua_function(tolua_S,"getAnimation",lua_dragonbones_DBCCArmatureNode_getAnimation);
         tolua_function(tolua_S,"getArmature",lua_dragonbones_DBCCArmatureNode_getArmature);
-        tolua_function(tolua_S,"unregisterMovementEventHandler",lua_dragonbones_DBCCArmatureNode_unregisterMovementEventHandler);
         tolua_function(tolua_S,"getCCSlot",lua_dragonbones_DBCCArmatureNode_getCCSlot);
         tolua_function(tolua_S,"unregisterFrameEventHandler",lua_dragonbones_DBCCArmatureNode_unregisterFrameEventHandler);
         tolua_function(tolua_S,"getCCDisplay",lua_dragonbones_DBCCArmatureNode_getCCDisplay);
         tolua_function(tolua_S,"advanceTime",lua_dragonbones_DBCCArmatureNode_advanceTime);
+        tolua_function(tolua_S,"unregisterAnimationEventHandler",lua_dragonbones_DBCCArmatureNode_unregisterAnimationEventHandler);
         tolua_function(tolua_S,"create", lua_dragonbones_DBCCArmatureNode_create);
         tolua_function(tolua_S,"createWithWorldClock", lua_dragonbones_DBCCArmatureNode_createWithWorldClock);
     tolua_endmodule(tolua_S);
