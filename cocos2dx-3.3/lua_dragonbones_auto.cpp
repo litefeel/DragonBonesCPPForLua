@@ -7112,6 +7112,103 @@ int lua_register_dragonbones_DBCCFactory(lua_State* tolua_S)
     g_typeCast["DBCCFactory"] = "db.DBCCFactory";
     return 1;
 }
+
+int lua_dragonbones_DBCCUtils_setAllBlendFunc(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"db.DBCCUtils",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 3)
+    {
+        dragonBones::DBCCArmature* arg0;
+        int arg1;
+        int arg2;
+        ok &= luaval_to_object<dragonBones::DBCCArmature>(tolua_S, 2, "db.DBCCArmature",&arg0);
+        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "db.DBCCUtils:setAllBlendFunc");
+        ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2, "db.DBCCUtils:setAllBlendFunc");
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCUtils_setAllBlendFunc'", nullptr);
+            return 0;
+        }
+        dragonBones::DBCCUtils::setAllBlendFunc(arg0, arg1, arg2);
+        return 0;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "db.DBCCUtils:setAllBlendFunc",argc, 3);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCUtils_setAllBlendFunc'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_dragonbones_DBCCUtils_setAllGLParamState(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"db.DBCCUtils",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 2)
+    {
+        dragonBones::DBCCArmature* arg0;
+        cocos2d::GLProgramState* arg1;
+        ok &= luaval_to_object<dragonBones::DBCCArmature>(tolua_S, 2, "db.DBCCArmature",&arg0);
+        ok &= luaval_to_object<cocos2d::GLProgramState>(tolua_S, 3, "cc.GLProgramState",&arg1);
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_dragonbones_DBCCUtils_setAllGLParamState'", nullptr);
+            return 0;
+        }
+        dragonBones::DBCCUtils::setAllGLParamState(arg0, arg1);
+        return 0;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "db.DBCCUtils:setAllGLParamState",argc, 2);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_dragonbones_DBCCUtils_setAllGLParamState'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_dragonbones_DBCCUtils_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (DBCCUtils)");
+    return 0;
+}
+
+int lua_register_dragonbones_DBCCUtils(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"db.DBCCUtils");
+    tolua_cclass(tolua_S,"DBCCUtils","db.DBCCUtils","",nullptr);
+
+    tolua_beginmodule(tolua_S,"DBCCUtils");
+        tolua_function(tolua_S,"setAllBlendFunc", lua_dragonbones_DBCCUtils_setAllBlendFunc);
+        tolua_function(tolua_S,"setAllGLParamState", lua_dragonbones_DBCCUtils_setAllGLParamState);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(dragonBones::DBCCUtils).name();
+    g_luaType[typeName] = "db.DBCCUtils";
+    g_typeCast["DBCCUtils"] = "db.DBCCUtils";
+    return 1;
+}
 TOLUA_API int register_all_dragonbones(lua_State* tolua_S)
 {
 	tolua_open(tolua_S);
@@ -7130,6 +7227,7 @@ TOLUA_API int register_all_dragonbones(lua_State* tolua_S)
 	lua_register_dragonbones_DBCCArmature(tolua_S);
 	lua_register_dragonbones_DBCCArmatureNode(tolua_S);
 	lua_register_dragonbones_WorldClock(tolua_S);
+	lua_register_dragonbones_DBCCUtils(tolua_S);
 
 	tolua_endmodule(tolua_S);
 	return 1;

@@ -140,4 +140,16 @@ int register_all_dragonbones(lua_State* tolua_S);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 #endif // __dragonbones_h__
