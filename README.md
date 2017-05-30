@@ -3,6 +3,8 @@ DragonBonesCPPForLua
 
 DragonBonesCPP用的的lua文件
 
+**由于版本更新了很多，请自己重新生成这些文件**
+
 
 相关用法：
 
@@ -12,5 +14,5 @@ DragonBonesCPP用的的lua文件
 
 
 
- [1]: http://www.litefeel.com/how-to-use-dragonbones-in-lua/
- [2]: http://www.litefeel.com/how-to-do-lua-bindings-for-dragonbones-android/
+ [1]: https://www.litefeel.com/how-to-use-dragonbones-in-lua/
+ [2]: https://www.litefeel.com/how-to-do-lua-bindings-for-dragonbones-android/
